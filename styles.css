@@ -1,0 +1,396 @@
+@font-face {
+  font-family: ATI-8x;
+  src:url("/fonts/Web_ATI_8x14.woff");
+}
+@font-face {
+  font-family: IBM-Bios;
+  src:url("/fonts/Web_IBM_BIOS.woff");
+}
+@font-face {
+  font-family: RM-Nimbus;
+  src:url("/fonts/Web_RM_Nimbus.woff");
+}
+
+body {
+  background-color: #000;
+  font-size: 20px;
+  text-align: left;
+  padding: 20px;
+}
+
+h1 {
+  font-family: IBM-Bios;
+  font-size: 2.5em;
+  text-align: left;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+  color: #fd6;
+}
+
+h2 {
+  font-family: RM-Nimbus;
+  color: #fd6;
+  font-size: 0.8em;
+}
+
+p, li {
+  font-family: ATI-8x;
+  color: #fd6;
+  font-size: 0.8em;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+img {
+  width: 60%;
+  height: auto;
+  max-width: 125px;
+  max-height: 125px;
+}
+
+#start-window {
+  display: grid;
+  grid-template-areas: 
+    "gametitle gametitle"
+    "gameinstructions gameimage"
+    "gameinstructions gamebutton";
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 40% 40%;
+  border: 2px solid #fd6;
+  width: 95vw;
+  height: 95vh;
+}
+
+#title {
+  grid-area: gametitle;
+}
+
+#instructions {
+  grid-area: gameinstructions;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 25px;
+  overflow-y: scroll;
+}
+
+#intro-image {
+  grid-area: gameimage;
+}
+
+.main-img {
+  padding-left: 25px;
+  display: block;
+  height: 100%;
+  width: 90%;
+  max-width: 2000px;
+  max-height: 2000px;
+}
+
+#start-box {
+  grid-area: gamebutton;
+  display: flex;
+  align-content: center;
+}
+
+#main-btn {
+  width: 50%;
+  height: 30%;
+  margin: auto;
+  background-color: #4b4;
+  border: 1px solid #000;
+  color: #000;
+  font-family: ATI-8x;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+#game-window {
+  display: none;
+  grid-template-areas:
+    "galaxy-stats current-stats current-stats"
+    "galaxy galaxy galaxy"
+    "message message end";
+  grid-template-columns: 50% 16% 34%;
+  grid-template-rows: 20% 60% 20%;
+  grid-gap: 0px;
+  border: 2px solid #fd6;
+  width: 95vw;
+  height: 95vh;
+}
+
+#galaxy-stats {
+  grid-area: galaxy-stats;
+  border-right: 2px solid #fd6;
+}
+
+#current-stats {
+  grid-area: current-stats;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.surface-img {
+  max-width: 200px;
+  max-height: 125px;
+}
+
+#planet-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+#galaxy {
+  grid-area: galaxy;
+  background-image: url("images/stars.jpeg");
+  border-top: 2px solid #fd6;
+  border-bottom: 2px solid #fd6;
+  display: grid;
+  grid-template-areas:
+    "box1 box2 box3 box-ds box10 box11 box12"
+    "box4 box5 box6 box-ds box13 box14 box15"
+    "box7 box8 box9 box-ds box16 box17 box18";
+  grid-template-columns: 13% 13% 13% 22% 13% 13% 13%;
+  grid-template-rows: 32% 36% 32%;
+  grid-gap: 5px;
+  padding-top: 10px;
+  padding-right: 50px;
+}
+
+#box1 {
+  grid-area: box1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box2 {
+  grid-area: box2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box3 {
+  grid-area: box3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box4 {
+  grid-area: box4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box5 {
+  grid-area: box5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box6 {
+  grid-area: box6;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box7 {
+  grid-area: box7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box8 {
+  grid-area: box8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box9 {
+  grid-area: box9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#death-star-box {
+  grid-area: box-ds;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#box10 {
+  grid-area: box10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box11 {
+  grid-area: box11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box12 {
+  grid-area: box12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box13 {
+  grid-area: box13;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box14 {
+  grid-area: box14;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box15 {
+  grid-area: box15;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box16 {
+  grid-area: box16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box17 {
+  grid-area: box17;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#box18 {
+  grid-area: box18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.rebel-planet-img {
+  border-radius: 50%;
+  border: 1px solid #00f;
+  box-shadow: 0px 5px 5px #00b;
+}
+
+.empire-planet-img {
+  border-radius: 50%;
+  border: 1px solid #f00;
+  box-shadow: 0px 5px 5px #b00;
+}
+
+.captured-planet-img {
+  border-radius: 50%;
+  border: 1px solid #066;
+  box-shadow: 0px 5px 5px #066;
+}
+
+.sacked-planet-img {
+  border-radius: 50%;
+  border: 1px solid #c63;
+  box-shadow: 0px 5px 5px #c63;
+}
+
+#message-box {
+  grid-area: message;
+  height: 100%;
+  border-right: 2px solid #fd6;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.message-character {
+  align-self: flex-end;
+  max-height: 100%;
+}
+
+#end-box {
+  grid-area: end;
+}
+
+#turn-btn {
+  width: 100%;
+  height: 100%;
+  background-color: #fd6;
+  border: none;
+  color: #000;
+  font-family: ATI-8x;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+#allocation {
+  grid-area: allocation;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+}
+
+#planet-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.planet-btn {
+  width: 19%;
+  border: 1px solid #fd6;
+  color: #fd6;
+  background-color: #000;
+  font-family: ATI-8x;
+  text-align: center;
+  font-size: 0.7em; 
+  padding: 5px;
+  margin-bottom: 5px;
+}

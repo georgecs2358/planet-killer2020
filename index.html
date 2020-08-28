@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="scripts/Main.mjs" type="module" defer></script>
+    <title>PlanetKiller 2020 - An in-browser game</title>
+  </head>
+  <body>
+    <div id="start-window">
+      <div id="title">
+        <h1>PlanetKiller 2020</h1>
+      </div>
+      <div id="instructions">
+        <h1 style="color:black">StarWars</h1>
+        <h2>The Empire has finished development of the Death Star. As leader 
+        of the fledgling Rebel Alliance, your only hope is to find the 3 secret 
+        plans hidden across the Empire, which will reveal how to destroy this
+        deadly weapon before the galaxy is layed to ruin. Can you outwit the 
+        devious Grand Moff Tarkin to save the Alliance from destruction?</h2>
+        <p><u>How to Play</u></p>
+        <ol>
+          <li>Deploy your fleets across the 9 Rebel planets. Do this using the
+            allocation buttons towards the bottom of the display.</li>
+          <li>Attack the Empire by first clicking a Rebel planet, then the
+            Empire planet to attack. The more attacking vs defending fleets,
+            the greater chance of defeating the Empire.</li>
+          <li>Press 'End Turn' when finished. Now the Empire will begin
+            their turn...</li>
+        </ol>
+        <p><u>Tips</u></p>
+        <ul>
+          <li>Secret plans are hidden on some Empire planets, so make sure to
+            attack atleast one planet per turn.</li>
+          <li>At the end of each turn credits are used to build rebel fleets;
+            protect planets which generate lots of gold per turn.</li>
+          <li>Food per turn is used to supply fleets, hence running low will
+            cause attrition.</li>
+          <li>Due to focusing all resources on the Death Star, the Empire only
+            invades planets which are not defended. Try and maintain 2
+            fleets on each planet.</li>
+        </ul>
+        <br>
+      </div>
+      <div id="intro-image">
+        <img id="destruction" class="main-img" src="images/destruction.jpeg" 
+        alt="Planet destruction">
+      </div>
+      <div id="start-box">
+        <button type="button" id="main-btn">Start Game</button>
+      </div>
+    </div>
+
+    <div id="game-window">
+      <div id="galaxy-stats">
+        <p id="gold-counter">Total gold per turn: 18</p>
+        <p id="food-counter">Total food per turn: 9</p>
+        <p id="fleet-counter"></p>
+        <p id="plans-counter">Death Star plans captured: 0/3</p>
+      </div>
+      <div id="current-stats">
+        <p>Hover over a planet to find out more...</p>
+      </div>
+      <div id="galaxy">
+        <div class="padding-box"></div>
+        <div id="box1" class="planet-box"></div>
+        <div id="box2" class="planet-box"></div>
+        <div id="box3" class="planet-box"></div>
+        <div class="middle-box"></div>
+        <div id="box10" class="planet-box"></div>
+        <div id="box11" class="planet-box"></div>
+        <div id="box12" class="planet-box"></div>
+        <div class="padding-box"></div>
+        <div id="box4" class="planet-box"></div>
+        <div id="box5" class="planet-box"></div>
+        <div id="box6" class="planet-box"></div>
+        <div id="death-star-box">
+          <img id="DeathStar" src="images/planets/deathstar.png"
+            alt="The Death Star">
+        </div>
+        <div id="box13" class="planet-box"></div>
+        <div id="box14" class="planet-box"></div>
+        <div id="box15" class="planet-box"></div>
+        <div class="padding-box"></div>
+        <div id="box7" class="planet-box"></div>
+        <div id="box8" class="planet-box"></div>
+        <div id="box9" class="planet-box"></div>
+        <div class="middle-box"></div>
+        <div id="box16" class="planet-box"></div>
+        <div id="box17" class="planet-box"></div>
+        <div id="box18" class="planet-box"></div>
+        <div class="padding-box"></div>
+      </div>
+      <div id="allocation">
+        <h2 id="trp-counter"></h2>
+        <p><em>Click a button to allocate fleets</em></p>
+        <div id="planet-btns"></div>
+      </div>
+      <div id="message-box"></div>
+      <div id="end-box">
+        <button type="button" id="turn-btn">End Turn</button>
+      </div>
+    </div>
+    <p>All concepts and characters are property of The Walt Disney Company.</p>
+  </body>
+</html>
