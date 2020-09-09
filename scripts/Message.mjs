@@ -18,13 +18,16 @@ export class Message {
   get text() {
     let msgText;
     switch(this.type) {
+      case "welcome":
+        msgText = "Welcome! First allocate fleets using the gold buttons.";
+        break;
       case "initial":
-        msgText = "Now we must prepare amd launch an invasion. First click a" + 
+        msgText = "Now we must prepare amd launch an invasion. First click a" +
         " friendly planet, then select a planet to invade.";
         break;
       case "destroy":
         if (this.rebelVictory === 0) {
-          msgText = "The Death Star dealt with " + this.planet.name + 
+          msgText = "The Death Star dealt with " + this.planet.name +
           ". The Empire also captured other unguarded planets.";
         } else {
           msgText = this.planet.name + " has experienced the full power of the "
@@ -43,16 +46,16 @@ export class Message {
           msgText = "You are a part of the Rebel Alliance and a traitor! " +
           "You will be punished for capturing " + this.planet.name + ".";
         } else if (this.rebelVictory === 2) {
-          msgText = "We uncovered secret plans when freeing " + this.planet.name 
+          msgText = "We uncovered secret plans when freeing " + this.planet.name
           + ". If all 3 plans are found, we can attack the Death Star"
           + " and destroy that ship!";
         } else if (!(this.rebelVictory)) {
-          msgText = "Our ships failed to capture " + this.planet.name + 
+          msgText = "Our ships failed to capture " + this.planet.name +
           ". We must regroup.";
         }
         break;
       case "success":
-        msgText = "We have all the Death Star plans! We can now attack the " +
+        msgText = "We have all the plans! We can now attack the " +
         "Death Star directly to defeat the Empire!";
         break;
     }
@@ -60,7 +63,9 @@ export class Message {
   }
 
   get image() {
-    if (this.type === "initial") {
+    if (this.type === "welcome") {
+      return "luke";
+    } else if (this.type === "initial") {
       return "leia";
     } else if (this.type === "success") {
       return "luke";
@@ -86,7 +91,7 @@ export class Message {
   render() {
     const messageBox = document.getElementById('message-box');
     messageBox.innerHTML = `
-    <img class="message-character" src="images/messages/${this.image}.png" 
+    <img class="message-character" src="images/messages/${this.image}.png"
     class="" alt="Game message text">
     <p>${this.text}</p>
     `;

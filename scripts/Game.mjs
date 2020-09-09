@@ -4,7 +4,7 @@ import { AllocationBar } from './AllocationBar.mjs';
 import { Message } from './Message.mjs';
 
 /***
- * Properties: rebelAlliance and empire arrays contain key classes which manage
+ * Properties: rebels and empire arrays contain key classes which manage
  * user input, planets and game logic
  * Methods: endTurn listenes to the end turn button
  * endTurnHandler calculates the current number of rebel fleets, updates the UI,
@@ -14,34 +14,52 @@ export class Game {
 
   constructor() {
     const rebelPlanets = new Array(
-      new RebelPlanet('Lothal', 2, 1),
-      new RebelPlanet('Hoth', 1, 0),
-      new RebelPlanet('Alderaan', 4, 4),
-      new RebelPlanet('Yavin-4', 1, 3),
-      new RebelPlanet('Mon-Calamari', 3, 1),
-      new RebelPlanet('Sullust', 1, 1),
-      new RebelPlanet('Chandrila', 3, 2),
       new RebelPlanet('Dantooine', 1, 3),
-      new RebelPlanet('Bothawui', 2, 3)
+      new RebelPlanet('Lothal', 2, 2),
+      new RebelPlanet('Hoth', 2, 0),
+      new RebelPlanet('Chandrila', 3, 2),
+      new RebelPlanet('Yavin-4', 1, 3),
+      new RebelPlanet('Alderaan', 4, 4),
+      new RebelPlanet('Mon-Calamari', 3, 2),
+      new RebelPlanet('Bothawui', 3, 3),
+      new RebelPlanet('Sullust', 1, 1)
     );
+
     const empirePlanets = new Array(
-      new EmpirePlanet('Coruscant', 5, true),
-      new EmpirePlanet('Naboo', 5, true),
-      new EmpirePlanet('Mustafar', 5, true),
-      new EmpirePlanet('Kashyyyk', 5, false),
-      new EmpirePlanet('Corellia', 5, false),
-      new EmpirePlanet('Byss', 5, false),
-      new EmpirePlanet('Malastare', 5, false),
-      new EmpirePlanet('Jakku', 5, false),
-      new EmpirePlanet('Geonosis', 5, false)
+      new EmpirePlanet('Jakku', 4),
+      new EmpirePlanet('Mustafar', 5),
+      new EmpirePlanet('Byss', 5),
+      new EmpirePlanet('Corellia', 5),
+      new EmpirePlanet('Coruscant', 7),
+      new EmpirePlanet('Naboo', 6),
+      new EmpirePlanet('Kashyyyk', 4),
+      new EmpirePlanet('Malastare', 5),
+      new EmpirePlanet('Geonosis', 4)
     );
-    this.rebelAlliance = new RebelAlliance(rebelPlanets);
-    this.empire = new Empire(empirePlanets, this.rebelAlliance);
-    this.rebelAlliance.setup(true);
+    let planNumber = null;
+    let undeterminedPlanets = [...empirePlanets];
+    let counter = 9;
+    while (counter > 6) {
+      planNumber = Math.floor((Math.random() * (counter-1)));
+      empirePlanets[planNumber].hasPlans = true;
+      undeterminedPlanets.splice(planNumber, 1);
+      counter--;
+    }
+
+
+    this.rebels = new RebelAlliance(rebelPlanets);
+    this.empire = new Empire(empirePlanets, this.rebels);
+    this.rebels.setup(true);
     this.empire.setup(false);
     this.endTurnSetup();
-    new AllocationBar(this.rebelAlliance);
-    new Message("initial");
+
+    new Message("welcome");
+    function initialRebelTurn(rebels) {
+      new AllocationBar(rebels);
+      new Message("initial");
+    }
+    setTimeout(initialRebelTurn, 3000, this.rebels);
+
   }
 
   endTurnSetup() {
@@ -50,31 +68,31 @@ export class Game {
   }
 
   endTurnHandler() {
-    this.rebelAlliance.totalFleetsPerTurn = 2;
-    document.getElementById('turn-btn').disabled = false;
-    // Deal with the amount of rebel fleets, food and gold and plans captured
-    if (this.rebelAlliance.totalFoodPerTurn <= 0) {
-      this.rebelAlliance.totalFleetsPerTurn += this.rebelAlliance.totalFoodPerTurn;
+    this.rebels.totalFleetsPerTurn = 3;
+    document.getElementById('turn-btn').disabled = true;
+
+    // Deal with the amount of rebel fleets, food, credits and plans captured
+    if (this.rebels.totalFoodPerTurn <= 0) {
+      this.rebels.totalFleetsPerTurn += this.rebels.totalFoodPerTurn;
     }
-    this.rebelAlliance.totalFleetsPerTurn += this.rebelAlliance.totalGoldPerTurn*0.5;
-    if (this.rebelAlliance.totalFleetsPerTurn > 3) {
-      this.rebelAlliance.totalFleetsPerTurn = 
-        Math.floor(this.rebelAlliance.totalFleetsPerTurn);
+    this.rebels.totalFleetsPerTurn += this.rebels.totalGoldPerTurn*0.5;
+    if (this.rebels.totalFleetsPerTurn > 3) {
+      this.rebels.totalFleetsPerTurn =
+        Math.floor(this.rebels.totalFleetsPerTurn);
     } else {
-      this.rebelAlliance.totalFleetsPerTurn = 3;
+      this.rebels.totalFleetsPerTurn = 3;
     }
 
-    document.getElementById('gold-counter').innerHTML = `
-    Total gold per turn: ${this.rebelAlliance.totalGoldPerTurn}`;
+    document.getElementById('credits-counter').innerHTML = `
+    Total credits per turn: ${this.rebels.totalGoldPerTurn} million`;
     document.getElementById('food-counter').innerHTML = `
-    Total food per turn: ${this.rebelAlliance.totalFoodPerTurn}`;
+    Total food per turn: ${this.rebels.totalFoodPerTurn}`;
     document.getElementById('fleet-counter').innerHTML = `
-    Rebel fleets per turn: ${this.rebelAlliance.totalFleetsPerTurn}`;
+    Rebel fleets per turn: ${this.rebels.totalFleetsPerTurn}`;
 
-    /* Invade a planet with little troops, then destroy a planet using the 
-    Death Star */
-    let destroyNumber = Math.floor((Math.random() * this.rebelAlliance.size));
-    this.empire.deathStar.destroy(this.rebelAlliance.planets[destroyNumber]);
+    // Invade an exposed planet, then destroy a planet using the Death Star
+    let destroyNumber = Math.floor((Math.random() * this.rebels.size));
+    this.empire.deathStar.destroy(this.rebels.planets[destroyNumber]);
     this.empire.deathStar.attack();
 
     // Check for victories
@@ -84,12 +102,11 @@ export class Game {
       document.getElementById('DeathStar').className = 'empire-planet-img';
     }
 
-    // TODO: Rework this once the animation is finished
-    function startRebelTurn(rebels) { 
+    function startRebelTurn(rebels) {
       new AllocationBar(rebels);
       document.getElementById('turn-btn').disabled = false;
     }
-    setTimeout(startRebelTurn, 3250, this.rebelAlliance);
+    setTimeout(startRebelTurn, 3500, this.rebels);
   }
 
 }

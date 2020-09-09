@@ -20,12 +20,18 @@ body {
 
 h1 {
   font-family: IBM-Bios;
-  font-size: 2.5em;
+  font-size: 2em;
   text-align: left;
   padding-top: 30px;
   padding-bottom: 30px;
   text-align: center;
   color: #fd6;
+}
+
+a {
+  text-decoration: none;
+  font-family: ATI-8x;
+  color: #0bb;
 }
 
 h2 {
@@ -49,9 +55,19 @@ img {
   max-height: 125px;
 }
 
+#beta {
+  font-family: IBM-Bios;
+  color: #0bb;
+  font-size: 1.2em;
+  position: absolute;
+  left: 750px;
+  top: 30px;
+  transform: rotate(15deg);
+}
+
 #start-window {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "gametitle gametitle"
     "gameinstructions gameimage"
     "gameinstructions gamebutton";
@@ -70,7 +86,7 @@ img {
   grid-area: gameinstructions;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding-left: 25px;
   overflow-y: scroll;
 }
@@ -158,6 +174,10 @@ img {
   grid-gap: 5px;
   padding-top: 10px;
   padding-right: 50px;
+}
+
+.planet-box {
+  padding: 10px;
 }
 
 #box1 {
@@ -390,7 +410,19 @@ img {
   background-color: #000;
   font-family: ATI-8x;
   text-align: center;
-  font-size: 0.7em; 
+  font-size: 0.7em;
   padding: 5px;
   margin-bottom: 5px;
+}
+
+/* #lazer {
+	display: none;
+	position: absolute;
+	width: 25px;
+	height: 3px;
+	background-color: #0b0;
+} */
+
+#outro {
+  padding-right: 25px;
 }

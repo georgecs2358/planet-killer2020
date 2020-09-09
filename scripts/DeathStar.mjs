@@ -35,11 +35,21 @@ export class DeathStar extends Planet {
   }
 
   destroy(rebelPlanet) {
+// 		const dsImageRect =	 document.getElementById('DeathStar')
+// 			.getBoundingClientRect();
+// 		const rpImageRect =	document.getElementById(rebelPlanet.name)
+// 			.getBoundingClientRect();
+// 		const initialX = dsImageRect.x + 0.5*dsImageRect.width;
+// 		const initialY = dsImageRect.y - 0.3*dsImageRect.height;
+// 		const targetX = rpImageRect.x - 0.5*rpImageRect.width;
+// 		const targetY = rpImageRect.y - 0.5*rpImageRect.height;
+		
     const _img = document.getElementById(rebelPlanet.name);
     _img.src="images/rocks.png";
     _img.className = "";
     _img.nextElementSibling.remove();
     this.enemy.removePlanet(rebelPlanet);
+    rebelPlanet.removeHoverable();
     if (!(this.enemy.size)) {
       Main.endGame(false);
     }
@@ -66,6 +76,7 @@ export class DeathStar extends Planet {
       document.getElementById(`${unguarded[0].name}`)
         .className = "empire-planet-img";
     }
+    
   }
 
   defend(attackingPlanet) {

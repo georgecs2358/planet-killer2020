@@ -1,7 +1,7 @@
 import { Message } from './Message.mjs';
 
 /***
- * Properties: A name to identify, gold and food per turn which contribute to
+ * Properties: A name to identify, credits and food per turn which contribute to
  * Rebel resources. A getter returns the image path name.
  * Methods: makeClickable adds an event listener to the DOM.
 ***/
@@ -11,11 +11,11 @@ export class Planet {
     this.name= name;
   }
 
-  get imagePathName() { 
+  get imagePathName() {
     return `images/planets/${this.name.toLowerCase()}.png`;
   }
 
-  get imageSurfacePathName() { 
+  get imageSurfacePathName() {
     return `images/surfaces/${this.name.toLowerCase()}.png`;
   }
 
@@ -45,6 +45,11 @@ export class RebelPlanet extends Planet {
     this.fleets = 0;
   }
 
+  removeHoverable() {
+    const _image = document.getElementById(`${this.name}`);
+    _image.removeEventListener('mouseover', this.hoverHandler.bind(this));
+  }
+
   clickHandler(rebelAlliance) {
     if (rebelAlliance.planets.includes(this)) {
       rebelAlliance.attackingPlanet = this;
@@ -56,17 +61,17 @@ export class RebelPlanet extends Planet {
 
   hoverHandler() {
     document.getElementById('current-stats').innerHTML = `
-    <img class="surface-img" src="${this.imageSurfacePathName}" 
+    <img class="surface-img" src="${this.imageSurfacePathName}"
     alt="${this.name} image">
     <div class="planet-stats">
     <p><u>${this.name}</u></p>
-    <p>Gold per turn: ${this.goldPerTurn}</p>
+    <p>Credits per turn: ${this.goldPerTurn} million</p>
     <p>Food per turn: ${this.foodPerTurn}</p>
     <p>Fleets: ${this.fleets}</p>
     </div>
     `;
   }
-  
+
 }
 
 /***
@@ -77,10 +82,10 @@ export class RebelPlanet extends Planet {
 ***/
 export class EmpirePlanet extends Planet {
 
-  constructor(name, fleets, hasPlans) {
+  constructor(name, fleets) {
     super(name);
     this.fleets = fleets;
-    this.hasPlans = hasPlans;
+    this.hasPlans = false;
   }
 
   clickHandler(empire) {
@@ -90,7 +95,7 @@ export class EmpirePlanet extends Planet {
 
   hoverHandler() {
     document.getElementById('current-stats').innerHTML = `
-    <img class="surface-img" src="${this.imageSurfacePathName}" 
+    <img class="surface-img" src="${this.imageSurfacePathName}"
     alt="${this.name} image">
     <div class="planet-stats">
     <p><u>${this.name}</u></p>

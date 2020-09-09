@@ -1,5 +1,5 @@
 /***
- * Properties: rebelPlanets and totalRebelFleets, from rebelAlliance, will be
+ * Properties: rebelPlanets and totalRebelFleets, from rebels, will be
  * modified.
  * Methods: display adds an allocation bar to the game window and provides 
  * functionality for allocating troops
@@ -10,9 +10,9 @@
 ***/
 export class AllocationBar {
 
-  constructor(rebelAlliance) {
-    this.rebelPlanets = rebelAlliance.planets;
-    this.totalRebelFleets = rebelAlliance.totalFleetsPerTurn;
+  constructor(rebels) {
+    this.rebelPlanets = rebels.planets;
+    this.totalRebelFleets = rebels.totalFleetsPerTurn;
 
     this.display();
   }
