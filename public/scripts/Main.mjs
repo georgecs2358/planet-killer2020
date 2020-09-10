@@ -36,8 +36,8 @@ export class Main {
       will soon be over. The Jedi Order can be restored!</h2>
       <br><p style="padding-left:0px"> Thank you for playing :) For more stuff
       I have written check out my webpage: </p>
-      <br><a href="https://georgejs97.github.io">georgejs97.github.io</a>
-      `;
+      <br><a href="https://georgejs97.github.io target="_blank">
+      georgejs97.github.io</a>`;
       _newImage.src = "images/rebel-victory.jpeg";
       _newImage.style.boxShadow = "1px 5px 5px #00b";
     } else {
@@ -48,8 +48,8 @@ export class Main {
       the Alliance has been shattered...</h2>
       <br><p style="padding-left:0px"> Thank you for playing :) For more stuff
       I have written check out my webpage: </p>
-      <br><a href="https://georgejs97.github.io">georgejs97.github.io</a>
-      `;
+      <br><a href="https://georgejs97.github.io" target="_blank">
+      georgejs97.github.io</a>`;
       _newImage.src = "images/empire-victory.jpeg";
       _newImage.style.boxShadow = "1px 5px 5px #b00";
     }

@@ -44,7 +44,8 @@ export class Message {
       case "capture":
         if (this.rebelVictory === 1) {
           msgText = "You are a part of the Rebel Alliance and a traitor! " +
-          "You will be punished for capturing " + this.planet.name + ".";
+          "You will be punished for capturing " + this.planet.name + ". We have"
+          + "left rubble for you to rebuild.";
         } else if (this.rebelVictory === 2) {
           msgText = "We uncovered secret plans when freeing " + this.planet.name
           + ". If all 3 plans are found, we can attack the Death Star"

@@ -17,10 +17,10 @@ export class Game {
       new RebelPlanet('Dantooine', 1, 3),
       new RebelPlanet('Lothal', 2, 2),
       new RebelPlanet('Hoth', 2, 0),
-      new RebelPlanet('Chandrila', 3, 2),
+      new RebelPlanet('Mon-Calamari', 3, 2),
       new RebelPlanet('Yavin-4', 1, 3),
       new RebelPlanet('Alderaan', 4, 4),
-      new RebelPlanet('Mon-Calamari', 3, 2),
+      new RebelPlanet('Chandrila', 3, 2),
       new RebelPlanet('Bothawui', 3, 3),
       new RebelPlanet('Sullust', 1, 1)
     );
@@ -36,16 +36,23 @@ export class Game {
       new EmpirePlanet('Malastare', 5),
       new EmpirePlanet('Geonosis', 4)
     );
+
     let planNumber = null;
-    let undeterminedPlanets = [...empirePlanets];
+    function getName(planet) { return planet.name }
+    let undeterminedPlanets = empirePlanets.map(getName);
     let counter = 9;
     while (counter > 6) {
       planNumber = Math.floor((Math.random() * (counter-1)));
-      empirePlanets[planNumber].hasPlans = true;
       undeterminedPlanets.splice(planNumber, 1);
       counter--;
     }
-
+    for (let i=0; i<empirePlanets.length; i++) {
+      if (undeterminedPlanets.indexOf(empirePlanets[i].name) > -1) {
+        empirePlanets[i].hasPlans = false;
+      } else {
+        empirePlanets[i].hasPlans = true;
+      }
+    }
 
     this.rebels = new RebelAlliance(rebelPlanets);
     this.empire = new Empire(empirePlanets, this.rebels);
