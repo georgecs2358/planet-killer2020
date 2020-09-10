@@ -1,0 +1,23 @@
+{
+  "name": "planet-killer2020",
+  "version": "1.0.0",
+  "description": "A turn-based strategy, science fiction game.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "keywords": [
+  	"game", 
+  	"turn-based strategy", 
+  	"star wars", 
+  	"planet", 
+  	"science fiction",
+  	"galaxy"
+  ],
+  "author": "georgejs97",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "4.17.1"
+  }
+}
