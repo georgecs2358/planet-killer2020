@@ -7,17 +7,19 @@
     "start": "node src/app.js"
   },
   "keywords": [
-  	"game", 
-  	"turn-based strategy", 
-  	"star wars", 
-  	"planet", 
-  	"science fiction",
-  	"galaxy"
+    "game",
+    "turn-based strategy",
+    "star wars",
+    "planet",
+    "science fiction",
+    "galaxy"
   ],
   "author": "georgejs97",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    "path": "4.17.1"
+    "express": "^4.16.4"
+  },
+  "engines": {
+    "node": ">= 12"
   }
 }
