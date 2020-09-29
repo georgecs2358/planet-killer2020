@@ -1,4 +1,6 @@
-# Planet Killer 2020
+# Planet Killer 2020 (Beta)
+
+A final, more user-friendly version will be coming shortly
 
 https://planetkiller2020.herokuapp.com
 
