@@ -3,7 +3,6 @@ import { Game } from './Game.mjs';
 /***
  * Main class which is an entry and exit point to the Game. The only class
  * which is not instantiated, as only used at the beginning and end of the app.
- * Also used for playing the animation which pauses game and destroys a planet.
  * Methods: startGame causes the main button will instantiate Game
  *  endGame configures the correct ending screen
  *  endGameHandler simply refreshes the page
@@ -36,8 +35,8 @@ export class Main {
       will soon be over. The Jedi Order can be restored!</h2>
       <br><p style="padding-left:0px"> Thank you for playing :) For more stuff
       I have written check out my webpage: </p>
-      <br><a href="https://georgejs97.github.io target="_blank">
-      georgejs97.github.io</a>`;
+      <br><a href="https://georgecs2358.github.io target="_blank">
+      georgecs2358.github.io</a>`;
       _newImage.src = "images/rebel-victory.jpeg";
       _newImage.style.boxShadow = "1px 5px 5px #00b";
     } else {
@@ -48,8 +47,8 @@ export class Main {
       the Alliance has been shattered...</h2>
       <br><p style="padding-left:0px"> Thank you for playing :) For more stuff
       I have written check out my webpage: </p>
-      <br><a href="https://georgejs97.github.io" target="_blank">
-      georgejs97.github.io</a>`;
+      <br><a href="https://georgecs2358.github.io" target="_blank">
+      georgecs2358.github.io</a>`;
       _newImage.src = "images/empire-victory.jpeg";
       _newImage.style.boxShadow = "1px 5px 5px #b00";
     }
